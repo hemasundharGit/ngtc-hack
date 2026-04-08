@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: medigenie-backend
+    runtime: docker
+    rootDir: mcrd
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: LOG_LEVEL
+        value: INFO
