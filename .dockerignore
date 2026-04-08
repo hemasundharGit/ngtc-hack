@@ -9,6 +9,5 @@ coverage
 dist
 Dockerfile*
 docker-compose*.yml
-mcrd
 ui
 .venv
