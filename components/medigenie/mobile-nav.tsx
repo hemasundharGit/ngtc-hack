@@ -9,7 +9,13 @@ const items = [
   { label: "Insights", icon: PanelRight },
 ];
 
-export function MobileNav({ onOpenInsights }: { onOpenInsights: () => void }) {
+export function MobileNav({
+  onOpenSidebar,
+  onOpenInsights,
+}: {
+  onOpenSidebar: () => void;
+  onOpenInsights: () => void;
+}) {
   return (
     <div className="fixed inset-x-4 bottom-4 z-40 rounded-[1.8rem] bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(2,6,23,0.96))] px-3 py-2 text-slate-300 shadow-[0_24px_60px_rgba(0,0,0,0.28)] ring-1 ring-white/10 backdrop-blur-2xl lg:hidden">
       <div className="flex items-center justify-between gap-2">
@@ -18,7 +24,9 @@ export function MobileNav({ onOpenInsights }: { onOpenInsights: () => void }) {
           const action =
             item.label === "Chat"
               ? () => window.scrollTo({ top: 0, behavior: "smooth" })
-              : onOpenInsights;
+              : item.label === "History"
+                ? onOpenSidebar
+                : onOpenInsights;
 
           return (
             <button

@@ -53,6 +53,7 @@ export function MedigenieAppShell() {
   const [animatedAssistantId, setAnimatedAssistantId] = useState<string | null>(null);
   const [showScrollDown, setShowScrollDown] = useState(false);
   const [insightsOpen, setInsightsOpen] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   const chatEndRef = useRef<HTMLDivElement | null>(null);
@@ -439,6 +440,8 @@ export function MedigenieAppShell() {
         health={health}
         healthState={healthState}
         healthMessage={healthMessage}
+        mobileOpen={mobileSidebarOpen}
+        onCloseMobile={() => setMobileSidebarOpen(false)}
       />
       <ToastStack toasts={toasts} />
 
@@ -542,7 +545,7 @@ export function MedigenieAppShell() {
         symptomTrends={symptomTrends}
       />
 
-      <MobileNav onOpenInsights={() => setInsightsOpen(true)} />
+      <MobileNav onOpenSidebar={() => setMobileSidebarOpen(true)} onOpenInsights={() => setInsightsOpen(true)} />
 
       <AnimatePresence>
         {showScrollDown ? (
